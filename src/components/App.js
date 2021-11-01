@@ -6,8 +6,10 @@ function App() {
   return (
     <div className="App">
         <Navbar />
-        <div className="container-main py-5">
-          <GenreButton genre="Test"/>
+        <div className="container container-main py-5">'
+          <div className="flex flex-col items-center">
+            <GenreButton genre="Test" enabled ="true"/>
+          </div>
         </div>
     </div>
   );
