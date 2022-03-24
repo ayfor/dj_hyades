@@ -4,7 +4,7 @@ import GenreButton from "./GenreButton";
 const { genres } = require("./genres.json");
 
 const GenreSelection = () => {
-	const [selectedGenres, setSelectedGenres] = useState(new Set());
+	const [selectedGenres, setSelectedGenres] = useState();
 
 	const [displayedGenres, setDisplayedGenres] = useState([]);
 
@@ -21,6 +21,7 @@ const GenreSelection = () => {
 		}
 
 		setDisplayedGenres(genreSubset);
+		setSelectedGenres(new Set());
 	}, []);
 
 	function handleGenreSelect(genre, isEnabled) {
