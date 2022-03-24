@@ -1,22 +1,44 @@
+import { useState, useEffect } from "react";
 import GenreButton from "./GenreButton";
 
 const { genres } = require("./genres.json");
 
 const GenreSelection = () => {
-	let genreSubset = [];
+	const [selectedGenres, setSelectedGenres] = useState(new Set());
 
-	//Randomly select a given number of genres from the 'genres' array
-	for (let index = 0; index < 15; index++) {
-		const randomIndex = Math.floor(Math.random() * (genres.length - 0 + 1) + 0);
-		const randomlySelectedGenre = genres[randomIndex];
+	const [displayedGenres, setDisplayedGenres] = useState([]);
 
-		genreSubset.push(randomlySelectedGenre);
+	useEffect(() => {
+		let genreSubset = [];
+		//Randomly select a given number of genres from the 'genres' array
+		for (let index = 0; index < 15; index++) {
+			const randomIndex = Math.floor(
+				Math.random() * (genres.length - 0 + 1) + 0
+			);
+			const randomlySelectedGenre = genres[randomIndex];
+
+			genreSubset.push(randomlySelectedGenre);
+		}
+
+		setDisplayedGenres(genreSubset);
+	}, []);
+
+	function handleGenreSelect(genre, isEnabled) {
+		if (isEnabled) {
+			selectedGenres.add(genre);
+		} else {
+			selectedGenres.delete(genre);
+		}
 	}
 
 	return (
 		<div className="container flex flex-row justify-center items-center flex-wrap">
-			{genreSubset.map((genre) => (
-				<GenreButton key={genre} genre={genre} />
+			{displayedGenres.map((genre) => (
+				<GenreButton
+					key={genre}
+					genre={genre}
+					handleGenreSelect={handleGenreSelect}
+				/>
 			))}
 		</div>
 	);

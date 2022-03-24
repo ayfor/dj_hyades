@@ -7,6 +7,8 @@ const PlaylistBrowser = () => {
 		lng: -75.697189,
 	});
 
+	const [currentWeather, setCurrentWeather] = useState("unknown");
+
 	//Get user location from browser
 	useEffect(() => {
 		const getUserLocation = () => {
@@ -40,8 +42,8 @@ const PlaylistBrowser = () => {
 			)
 				.then((response) => response.json())
 				.then((data) => {
-					if (data) {
-						console.log(data.weather[0].main);
+					if (data.weather[0].main) {
+						setCurrentWeather(data.weather[0].main);
 					}
 				});
 		};
@@ -53,6 +55,7 @@ const PlaylistBrowser = () => {
 		<div className="container container-main py-5">
 			<div className="flex flex-col items-center">
 				<GenreSelection />
+				<>Current Weather: {currentWeather}</>
 			</div>
 		</div>
 	);
