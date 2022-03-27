@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import GenreButton from "./GenreButton";
 
-const { genres } = require("./genres.json");
+const { genres } = require("../data/genres.json");
 
 const GenreSelection = () => {
 	const [selectedGenres, setSelectedGenres] = useState();
