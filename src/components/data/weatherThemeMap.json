@@ -5,7 +5,7 @@
 	},
 	{
 		"weather": "Thunderstorm",
-		"color": "indigo-700"
+		"color": "purple-700"
 	},
 	{
 		"weather": "Drizzle",
@@ -17,7 +17,7 @@
 	},
 	{
 		"weather": "Snow",
-		"color": "cyan-300"
+		"color": "-300"
 	},
 	{
 		"weather": "Atmosphere",
