@@ -11,9 +11,6 @@ function App() {
             <GenreSelection/>
           </div>
         </div>
-    <div>
-      <p> new div</p>
-    </div>
     </div>
   );
 }
