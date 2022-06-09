@@ -3,9 +3,7 @@ import GenreButton from "./GenreButton";
 
 const { genres } = require("../data/genres.json");
 
-const GenreSelection = () => {
-	const [selectedGenres, setSelectedGenres] = useState();
-
+const GenreSelection = ({ handleGenreSelect, genreIsSelected }) => {
 	const [displayedGenres, setDisplayedGenres] = useState([]);
 
 	useEffect(() => {
@@ -21,16 +19,7 @@ const GenreSelection = () => {
 		}
 
 		setDisplayedGenres(genreSubset);
-		setSelectedGenres(new Set());
 	}, []);
-
-	function handleGenreSelect(genre, isEnabled) {
-		if (isEnabled) {
-			selectedGenres.add(genre);
-		} else {
-			selectedGenres.delete(genre);
-		}
-	}
 
 	return (
 		<div className="container flex flex-row justify-center items-center flex-wrap">
@@ -39,7 +28,7 @@ const GenreSelection = () => {
 					key={genre}
 					genre={genre}
 					handleGenreSelect={handleGenreSelect}
-					genreIsSelected={selectedGenres.size > 0}
+					genreIsSelected={genreIsSelected}
 				/>
 			))}
 		</div>
