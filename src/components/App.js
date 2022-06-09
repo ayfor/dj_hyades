@@ -1,18 +1,15 @@
-import './App.css';
-import Navbar from './Navbar'
-import GenreSelection from './GenreSelect/GenreSection';
+import "./App.css";
+import PlaylistBrowser from "./pages/PlaylistBrowser";
+import ThemeMapper from "./data/ThemeMapper";
 
 function App() {
-  return (
-    <div className="App">
-        <Navbar />
-        <div className="container container-main py-5">
-          <div className="flex flex-col items-center">
-            <GenreSelection/>
-          </div>
-        </div>
-    </div>
-  );
+	return (
+		<ThemeMapper>
+			<div className="App">
+				<PlaylistBrowser />
+			</div>
+		</ThemeMapper>
+	);
 }
 
 export default App;
