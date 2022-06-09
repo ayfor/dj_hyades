@@ -39,6 +39,7 @@ const GenreSelection = () => {
 					key={genre}
 					genre={genre}
 					handleGenreSelect={handleGenreSelect}
+					genreIsSelected={selectedGenres.size > 0}
 				/>
 			))}
 		</div>
