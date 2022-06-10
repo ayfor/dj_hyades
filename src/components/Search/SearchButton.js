@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const SearchButton = ({ weather, color, searchTermSet }) => {
+const SearchButton = ({ token, weather, color, searchTermSet }) => {
 	const [buttonClass, setButtonClass] = useState();
 
 	const handlePlaylistSearchClick = () => {
@@ -12,7 +12,13 @@ const SearchButton = ({ weather, color, searchTermSet }) => {
 					"https://api.spotify.com/v1/search?type=playlist&limit=20&q=" +
 					encodeURIComponent(searchTermQuery);
 
-				fetch(url)
+				console.log(token);
+
+				fetch(url, {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				})
 					.then((response) => response.json())
 					.then((data) => {
 						console.log(data);

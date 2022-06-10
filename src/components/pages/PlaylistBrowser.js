@@ -3,7 +3,7 @@ import { useTheme } from "../data/ThemeMapper";
 import GenreSelection from "../GenreSelect/GenreSection";
 import SearchButton from "../Search/SearchButton";
 
-const PlaylistBrowser = () => {
+const PlaylistBrowser = ({ token }) => {
 	const [selectedGenres, setSelectedGenres] = useState(new Set());
 	const { weather, color } = useTheme();
 
@@ -23,6 +23,7 @@ const PlaylistBrowser = () => {
 					genreIsSelected={selectedGenres.size > 0}
 				/>
 				<SearchButton
+					token={token}
 					weather={weather}
 					color={color}
 					searchTermSet={selectedGenres}
