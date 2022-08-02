@@ -7,27 +7,29 @@ const Playlist = ({ token }) => {
 
 	const { weather, color } = useTheme();
 
-	const handlePlaylistSearchClick = () => {};
+	// const handlePlaylistSearchClick = () => {};
 
 	useEffect(() => {
 		const getSpotifyPlaylists = () => {
-			let searchTermQuery = `${weather}`;
-			let url = "https://api.spotify.com/v1/search?type=playlist&limit=20&q=" + encodeURIComponent(searchTermQuery);
+			if (weather != undefined) {
+				let searchTermQuery = `${weather}`;
+				let url = "https://api.spotify.com/v1/search?type=playlist&limit=20&q=" + encodeURIComponent(searchTermQuery);
 
-			fetch(url, {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			})
-				.then((response) => response.json())
-				.then((data) => {
-					console.log(data);
-				});
+				fetch(url, {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				})
+					.then((response) => response.json())
+					.then((data) => {
+						setPlaylists(data.playlists.items);
+					});
+			}
 		};
 		getSpotifyPlaylists();
-	}, []);
+	}, [weather]);
 
-	return <PlaylistBrowser />;
+	return <PlaylistBrowser playlists={playlists} />;
 };
 
 export default Playlist;

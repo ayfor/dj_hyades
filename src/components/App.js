@@ -36,15 +36,25 @@ function App() {
 
 	return (
 		<ThemeMapper>
-			{!token ? (
-				<a className="m-20 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded-full" href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
-					Login to Spotify
-				</a>
-			) : (
-				<button className="m-10 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded-full" onClick={logout}>
-					Logout
-				</button>
-			)}
+			<div className="container container-main py-2">
+				{!token ? (
+					<div className="m-1">
+						<a
+							className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded-full"
+							href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+						>
+							Login to Spotify
+						</a>
+					</div>
+				) : (
+					<button
+						className="m-1 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded-full"
+						onClick={logout}
+					>
+						Logout
+					</button>
+				)}
+			</div>
 			<div className="App">
 				<Playlist token={token} />
 			</div>

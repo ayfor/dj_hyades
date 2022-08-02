@@ -42,9 +42,7 @@ const ThemeMapper = ({ children }) => {
 
 	useEffect(() => {
 		const getCurrentWeather = () => {
-			fetch(
-				`https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.lat}&lon=${userLocation.lng}&appid=${process.env.REACT_APP_OPENWEATHER_API_TOKEN}`
-			)
+			fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.lat}&lon=${userLocation.lng}&appid=${process.env.REACT_APP_OPENWEATHER_API_TOKEN}`)
 				.then((response) => response.json())
 				.then((data) => {
 					if (data.weather[0].main) {
@@ -58,20 +56,13 @@ const ThemeMapper = ({ children }) => {
 	}, [userLocation]);
 
 	function mapThemeFromWeather(weather) {
-		let weatherThemeMap = require("./weatherThemeMap.json");
-		console.log(weatherThemeMap);
-		const theme = weatherThemeMap.find(
-			(element) => element.weather === weather
-		);
+		const weatherThemeMap = require("./weatherThemeMap.json");
+		console.log(weather);
+		const theme = weatherThemeMap.find((element) => element.weather === weather);
 		setCurrentTheme(theme);
 	}
 
-	return (
-		<ThemeContext.Provider value={currentTheme}>
-			{" "}
-			{children}
-		</ThemeContext.Provider>
-	);
+	return <ThemeContext.Provider value={currentTheme}> {children}</ThemeContext.Provider>;
 };
 
 export default ThemeMapper;
